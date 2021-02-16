@@ -11,5 +11,4 @@ class GetPostsUseCase constructor(
     override suspend fun run(params: Any?): List<Post> {
         return postsRepository.getPosts()
     }
-
 }

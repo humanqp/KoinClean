@@ -31,7 +31,7 @@ val NetworkModule = module {
 
 fun createOkHttpClient(): OkHttpClient {
     val httpLoggingInterceptor = HttpLoggingInterceptor()
-    httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
+    httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
     return OkHttpClient.Builder()
         .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
         .readTimeout(TIME_OUT, TimeUnit.SECONDS)
@@ -45,10 +45,12 @@ fun createRetrofit(okHttpClient: OkHttpClient, url: String): Retrofit {
         .addConverterFactory(MoshiConverterFactory.create()).build()
 }
 
+/** Retrofit Create*/
 fun createService(retrofit: Retrofit): ApiService {
     return retrofit.create(ApiService::class.java)
 }
 
+/** Retrofit ApiService 를 코루틴 인터페이스화*/
 fun createPostRepository(apiService: ApiService): PostsRepository {
     return PostsRepositoryImp(apiService)
 }
