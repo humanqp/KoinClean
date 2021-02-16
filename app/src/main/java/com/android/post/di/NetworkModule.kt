@@ -55,6 +55,7 @@ fun createPostRepository(apiService: ApiService): PostsRepository {
     return PostsRepositoryImp(apiService)
 }
 
+/** 실제 사용하는 Koin Repository*/
 fun createGetPostsUseCase(postsRepository: PostsRepository): GetPostsUseCase {
     return GetPostsUseCase(postsRepository)
 }

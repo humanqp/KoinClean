@@ -9,4 +9,8 @@ class PostsRepositoryImp(private val apiService: ApiService) : PostsRepository {
     override suspend fun getPosts(): List<Post> {
         return apiService.getPosts()
     }
+
+    override suspend fun getPostsEx(): List<Post> {
+        return apiService.getPosts()
+    }
 }
